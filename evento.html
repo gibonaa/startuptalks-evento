@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartupTalks - Compra</title>
+    <style>
+        /* Definindo o estilo geral */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a; /* Cor roxa */
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        button {
+            background-color: #ff9800; /* Cor laranja */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e68900;
+        }
+
+        input, select {
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background-color: #f0f0f5;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #6a1b9a;
+        }
+
+        .step-header {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Página de Checkout -->
+    <div id="checkout" class="step active">
+        <h1>StartupTalks - Compra</h1>
+        <div class="info-box">
+            <p><strong>Nome do Evento:</strong> StartupTalks</p>
+            <p><strong>Data do Evento:</strong> 12 de Abril de 2025</p>
+            <p><strong>Local:</strong> Hotel Susin, Mafra - SC</p>
+            <p><strong>Valor:</strong> R$ 50,00</p>
+        </div>
+        <button onclick="nextStep('payment')">Confirmar Compra</button>
+    </div>
+
+    <!-- Página de Confirmação de Pagamento -->
+    <div id="payment" class="step">
+        <h1 class="step-header">Confirmação de Pagamento</h1>
+        <div class="info-box">
+            <p><strong>Nome do Evento:</strong> StartupTalks</p>
+            <p><strong>Data do Evento:</strong> 12 de Abril de 2025</p>
+            <p><strong>Local:</strong> Hotel Susin, Mafra - SC</p>
+            <p><strong>Valor:</strong> R$ 50,00</p>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="email">Insira seu E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="payment-method">Escolha o Método de Pagamento:</label>
+                <select id="payment-method" name="payment-method">
+                    <option value="credit-card">Cartão de Crédito</option>
+                    <option value="boleto">Boleto Bancário</option>
+                </select>
+            </div>
+            <button type="button" onclick="nextStep('thankyou')">Confirmar Pagamento</button>
+        </form>
+    </div>
+
+    <!-- Página de Agradecimento -->
+    <div id="thankyou" class="step">
+        <h1 class="step-header">Obrigado pela Sua Compra!</h1>
+        <p>Você está quase lá! A sua compra foi realizada com sucesso.</p>
+        <p>Em breve, você receberá os detalhes do evento no seu e-mail.</p>
+        <button onclick="window.location.href='https://www.startuptalks.com';">Voltar para o site</button>
+    </div>
+</div>
+
+<script>
+    function nextStep(step) {
+        // Ocultar todas as etapas
+        const steps = document.querySelectorAll('.step');
+        steps.forEach((stepElement) => {
+            stepElement.classList.remove('active');
+        });
+
+        // Mostrar a etapa seguinte
+        document.getElementById(step).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
+
